@@ -1,12 +1,12 @@
 const Router = require('express-promise-router')
 const bodyParser = require('body-parser')
-const report = require('./report')
-// const boss = require('./boss')
+const reports = require('./reports')
+const users = require('./users')
 
 const router = new Router()
 router.use(bodyParser.json())
 
-router.use('/report', report)
-// router.use('/boss', boss)
+router.use('/reports', reports)
+router.use('/users', users)
 
 module.exports = router

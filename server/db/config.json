@@ -1,0 +1,20 @@
+{
+    "development": {
+      "user": "reports",
+      "password": "reports",
+      "database": "reports",
+      "host": "127.0.0.1"
+    },
+    "test": {
+      "user": "reports_test",
+      "password": "reports",
+      "database": "reports_test",
+      "host": "127.0.0.1"
+    },
+    "production": {
+      "user": "reports",
+      "password": "",
+      "database": "reports",
+      "host": "127.0.0.1"
+    }
+  }

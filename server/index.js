@@ -1,18 +1,31 @@
+const path = require('path')
 const express = require('express')
+const db = require('./db')
+
 const app = express()
+
 const port = 8000
 
 const api = require('./api')
 
 app.use('/api', api)
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.post('/create-report', (req,res) => res.send(' received a post request'))
-app.delete('/user', function (req, res) {
-    res.send('Got a DELETE request at /user')
+// Always return the main index.html, so react-router render the route in the client
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'))
+// })
+
+async function start() {
+  await db.verifyConnection()
+  console.log('DB connection verified')
+
+  const PORT = process.env.PORT || 8000
+  app.listen(port, () => {
+    console.log(
+      `Server succesfully started on port ${port}.`
+    )
   })
+}
 
+start()
 
-
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))

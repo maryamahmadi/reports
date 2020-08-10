@@ -1,0 +1,18 @@
+insert into users (username, password, user_role) values ('steve', 'iAmTheBoss', 'boss');
+insert into users (username, user_role) values ('maryam', 'employee');
+insert into users (username, user_role) values ('matt', 'employee');
+insert into users (username, user_role) values ('ukeme', 'employee');
+insert into users (username, user_role) values ('saad', 'employee');
+insert into users (username, user_role) values ('jaspreet', 'employee');
+insert into users (username, user_role) values ('shahram', 'employee');
+insert into users (username, user_role) values ('allanC', 'employee');
+insert into users (username, user_role) values ('alanI', 'employee');
+insert into users (username, user_role) values ('ahmad', 'employee');
+insert into users (username, user_role) values ('fan', 'employee');
+insert into users (username, user_role) values ('tao', 'employee');
+insert into users (username, user_role) values ('paul', 'employee');
+insert into users (username, user_role) values ('gloria', 'employee');
+insert into users (username, user_role) values ('chris', 'employee');
+insert into users (username, user_role) values ('rohit', 'employee');
+insert into users (username, user_role) values ('kevin', 'employee');
+insert into users (username, user_role) values ('mayuran', 'employee');

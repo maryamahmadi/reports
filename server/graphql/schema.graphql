@@ -1,0 +1,21 @@
+scalar Date
+
+type User {
+    id: ID!
+    name: String
+    role: Role
+    reports: [Report]
+}
+type Report {
+    id: ID!
+    #userId: ID
+    user: User
+    lastWeek: String
+    thisWeek: String
+    comments: String
+    date: Date
+}
+enum Role {
+  EMPLOYEE
+  BOSS
+}
