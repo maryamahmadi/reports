@@ -25,7 +25,7 @@ function NewReportFormParent () {
                         style={{width: '300px', marginBottom: '20px', padding: '4px 0 4px 0'}}
                         value={name} 
                         onChange={(event)=> setName(event.target.value)}>
-                        <option value='' disabled selected hidden>Select Your Name</option>
+                        <option value='' disabled defaultValue hidden>Select Your Name</option>
                         <option value='ahmad'>Ahmad</option>
                         <option value='alanI'>Alan I</option>
                         <option value='alanC'>Allan C</option>
