@@ -10,11 +10,11 @@ function Header () {
                         Friday Reports
                     </Link>
                 </div>
-                <div style={{fontSize: '18px', fontWeight: '700', paddingTop: '5px'}}>
+                {/* <div style={{fontSize: '18px', fontWeight: '700', paddingTop: '5px'}}>
                     <Link style={{color: 'white', textDecoration: 'none'}} to='/boss'>
                         Boss View
                     </Link>
-                </div>
+                </div> */}
             </div>    
         </div>
     )

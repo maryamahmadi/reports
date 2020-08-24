@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../../../components/Header'
-import NewReportParent from './NewReportFormParent'
+import NewReportForm from './NewReportForm'
 function CreateReport () {
   return (
   <React.Fragment> 
     <Header />
-    <NewReportParent />
+    <NewReportForm />
   </React.Fragment>)
 }
 export default CreateReport

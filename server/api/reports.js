@@ -12,13 +12,13 @@ router.post('/', async (req, res) => {
     return res.status(400).json({
       status: 400,
       code: 'MISSING_USER_NAME',
-      message: 'Field username is required.'
+      message: 'Field username is required.',
     })
   } else if (!thisWeek) {
     return res.status(400).json({
       status: 400,
       code: 'MISSING_THIS_WEEK',
-      message: 'Field this_week is required.'
+      message: 'Field this_week is required.',
     })
   }
 
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// get all reports by username  
+// get all reports by username
 router.get('/:username', async (req, res) => {
   const { username } = req.params
   if (username) {
@@ -58,21 +58,21 @@ router.get('/:username', async (req, res) => {
   }
 })
 
-// get all reports by week  
+// get all reports by week
 router.get('/', async (req, res) => {
-    try {
-      let result = await db.query(
-        `select *
+  try {
+    let result = await db.query(
+      `select *
         from reports r
         where created_at >= now() - interval '1 week'
         order by r.created_at desc;`
-      )
+    )
 
-      res.json({ data: result.rows.map(convertDbRowToReport) })
-    } catch (e) {
-      // return processError(e, res)
-      res.send('error')
-    }
+    res.json({ data: result.rows.map(convertDbRowToReport) })
+  } catch (e) {
+    // return processError(e, res)
+    res.send('error')
+  }
 })
 
 function convertDbRowToReport(row) {
@@ -82,7 +82,7 @@ function convertDbRowToReport(row) {
     createdAt: row.created_at,
     thisWeek: row.this_week,
     nextWeek: row.next_week,
-    comments: row.comments
+    comments: row.comments,
   }
 }
 
@@ -182,7 +182,7 @@ module.exports = router
 //       `insert into reviews
 //       (user_id, chip_id, rating, description)
 //       values
-//       ($1, $2, $3, $4) 
+//       ($1, $2, $3, $4)
 //       returning *;`,
 //       [userId, chipId, rating, description]
 //     )
@@ -200,8 +200,4 @@ module.exports = router
 //   }
 // })
 
-
-
 // module.exports = router
-
-
