@@ -1,28 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import Created from './Created'
+import SelectUsernameField from '../../boss/components/SelectUsernameField'
 
 function NewReportForm() {
-  const employees = {
-    paul: 'Paul',
-    maryam: 'Maryam',
-    matt: 'Matt',
-    mayuran: 'Mayuran',
-    shahram: 'Shahram',
-    gloria: 'Gloria',
-    jaspreet: 'Jaspreet',
-    tao: 'Tao',
-    fan: 'Fan',
-    saad: 'Saad',
-    alanI: 'Alan I',
-    allanC: 'Allan C',
-    ukeme: 'Ukeme',
-    chris: 'Chris',
-    rohit: 'Rohit',
-    ahmad: 'Ahmad',
-    kevin: 'Kevin',
-  }
   const CustomButton = withStyles({
     root: {
       width: '100px',
@@ -33,8 +16,10 @@ function NewReportForm() {
       },
     },
   })(Button)
+
   const [created, setCreated] = useState(false)
   useEffect(() => setCreated(false), [])
+
   const onSubmit = async (event) => {
     event.persist()
     event.preventDefault()
@@ -76,6 +61,10 @@ function NewReportForm() {
   const [thisWeek, setThisWeek] = useState('')
   const [nextWeek, setNextWeek] = useState('')
   const [comments, setComments] = useState('')
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value)
+  }
   if (created) {
     return <Created />
   } else {
@@ -87,48 +76,38 @@ function NewReportForm() {
         </div>
         <form onSubmit={onSubmit}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <label style={{ paddingBottom: '5px' }}>Name:</label>
-            <select
-              style={{ width: '300px', marginBottom: '20px', padding: '4px 0 4px 0' }}
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-            >
-              <option value="" disabled defaultValue hidden>
-                Select Your Name
-              </option>
-              <option value="ahmad">Ahmad</option>
-              <option value="alanI">Alan I</option>
-              <option value="allanC">Allan C</option>
-              <option value="chris">Chris</option>
-              <option value="fan">Fan</option>
-              <option value="gloria">Gloria</option>
-              <option value="jaspreet">Jaspreet</option>
-              <option value="kevin">Kevin</option>
-              <option value="maryam">Maryam</option>
-              <option value="matt">Matt</option>
-              <option value="mayuran">Mayuran</option>
-              <option value="paul">Paul</option>
-              <option value="rohit">Rohit</option>
-              <option value="saad">Saad</option>
-              <option value="shahram">Shahram</option>
-              <option value="tao">Tao</option>
-              <option value="ukeme">Ukeme</option>
-            </select>
-            <label style={{ paddingBottom: '5px' }}>What did you do this week?</label>
-            <textarea
-              style={{ width: '700px', height: '150px', marginBottom: '20px' }}
+            <SelectUsernameField
+              selectedUser={username}
+              handleUsernameChange={handleUsernameChange}
+              hint="Select Your Name"
+            />
+            <TextField
+              style={{ paddingBottom: '10px', width: '400px' }}
+              id="thisWeek"
+              label="This Week"
+              multiline
+              rows={5}
+              variant="outlined"
               value={thisWeek}
               onChange={(event) => setThisWeek(event.target.value)}
             />
-            <label style={{ paddingBottom: '5px' }}>What will you be working on next week?</label>
-            <textarea
-              style={{ width: '700px', height: '100px', marginBottom: '20px' }}
+            <TextField
+              style={{ paddingBottom: '10px', width: '400px' }}
+              id="nextWeek"
+              label="Next Week"
+              multiline
+              rows={5}
+              variant="outlined"
               value={nextWeek}
               onChange={(event) => setNextWeek(event.target.value)}
             />
-            <label style={{ paddingBottom: '5px' }}>Comments</label>
-            <textarea
-              style={{ width: '700px', height: '50px', marginBottom: '20px' }}
+            <TextField
+              style={{ paddingBottom: '30px', width: '400px' }}
+              id="comments"
+              label="Comments"
+              multiline
+              rows={5}
+              variant="outlined"
               value={comments}
               onChange={(event) => setComments(event.target.value)}
             />
@@ -139,4 +118,5 @@ function NewReportForm() {
     )
   }
 }
+
 export default NewReportForm

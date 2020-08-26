@@ -1,3 +1,5 @@
+// add empty messages for fetch reports.
+
 import React, { useState, useEffect } from 'react'
 import SelectUsernameField from './SelectUsernameField'
 import ReportAccordion from '../../../components/ReportAccordion'
@@ -22,7 +24,7 @@ function ReportByName() {
   }, [username])
   return (
     <div style={{ padding: '30px 30px' }}>
-      <SelectUsernameField username={username} handleUsernameChange={handleUsernameChange} />
+      <SelectUsernameField username="" handleUsernameChange={handleUsernameChange} hint="Select an Employee" />
       {reports.map((report) => {
         const details = {
           thisWeek: report.thisWeek,
