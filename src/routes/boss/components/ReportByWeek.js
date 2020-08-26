@@ -33,8 +33,6 @@ function ReportByWeek() {
     }
     fetchReports()
   }, [])
-  console.log('***users', users)
-  console.log('***reports', reports)
   return (
     <div style={{ padding: '30px 30px' }}>
       {reports.map((report) => {
