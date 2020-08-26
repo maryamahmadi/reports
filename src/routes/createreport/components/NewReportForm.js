@@ -30,7 +30,7 @@ function NewReportForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username,
+          userId,
           thisWeek,
           nextWeek,
           comments: comments,
@@ -57,27 +57,28 @@ function NewReportForm() {
     }
   }
 
-  const [username, setUsername] = useState('')
+  const [userId, setUserId] = useState('')
   const [thisWeek, setThisWeek] = useState('')
   const [nextWeek, setNextWeek] = useState('')
   const [comments, setComments] = useState('')
 
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value)
+    setUserId(event.target.value)
   }
+
   if (created) {
     return <Created />
   } else {
     return (
       <div style={{ padding: '20px' }}>
-        <div style={{ fontSize: '28px', fontWeight: '700', paddingBottom: '10px', color: '#124191' }}>
+        <div style={{ fontSize: '28px', fontWeight: '700', paddingBottom: '20px', color: '#124191' }}>
           {' '}
           Submit Your Report{' '}
         </div>
         <form onSubmit={onSubmit}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <SelectUsernameField
-              selectedUser={username}
+              selectedUser={userId}
               handleUsernameChange={handleUsernameChange}
               hint="Select Your Name"
             />

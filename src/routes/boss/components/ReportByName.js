@@ -31,7 +31,9 @@ function ReportByName() {
           nextWeek: report.nextWeek,
           comments: report.comments,
         }
-        return <ReportAccordion key={report.id} summary={report.createdAt} details={details} />
+        return (
+          <ReportAccordion key={report.id} summary={new Date(report.createdAt).toLocaleString()} details={details} />
+        )
       })}
     </div>
   )

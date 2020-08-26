@@ -10,7 +10,7 @@ function ReportByWeek() {
         const resp = await fetch(`/api/users`)
         const result = await resp.json()
         let userMap = []
-        result.data.forEach((user) => userMap.push({ username: user.username, name: user.name }))
+        result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name }))
         setUsers(userMap)
       } catch (e) {
         console.error(e)
@@ -20,6 +20,7 @@ function ReportByWeek() {
   }, [])
 
   const [reports, setReports] = useState([])
+
   useEffect(() => {
     const fetchReports = async () => {
       try {
@@ -32,6 +33,8 @@ function ReportByWeek() {
     }
     fetchReports()
   }, [])
+  console.log('***users', users)
+  console.log('***reports', reports)
   return (
     <div style={{ padding: '30px 30px' }}>
       {reports.map((report) => {
@@ -43,7 +46,7 @@ function ReportByWeek() {
         return (
           <ReportAccordion
             key={report.id}
-            summary={users.find((user) => user.username === report.username).name}
+            summary={users.find((user) => user.userId === report.userId).name}
             details={details}
           />
         )

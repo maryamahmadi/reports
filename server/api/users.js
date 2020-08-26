@@ -22,6 +22,7 @@ function convertDbRowToUser(row) {
   return {
     id: row.id,
     username: row.username,
+    userId: row.user_id,
     name: row.name,
     userRole: row.user_role,
     password: row.password,

@@ -6,13 +6,13 @@ const router = new Router()
 
 // create a report
 router.post('/', async (req, res) => {
-  const { username, thisWeek, nextWeek, comments } = req.body
+  const { userId, thisWeek, nextWeek, comments } = req.body
 
-  if (!username) {
+  if (!userId) {
     return res.status(400).json({
       status: 400,
-      code: 'MISSING_USER_NAME',
-      message: 'Field username is required.',
+      code: 'MISSING_USER_ID',
+      message: 'Field userId is required.',
     })
   } else if (!thisWeek) {
     return res.status(400).json({
@@ -25,11 +25,11 @@ router.post('/', async (req, res) => {
   try {
     const result = await db.query(
       `insert into reports
-      (username, this_week, next_week, comments)
+      (user_id, this_week, next_week, comments)
       values
       ($1, $2, $3, $4) 
       returning *;`,
-      [username, thisWeek, nextWeek, comments]
+      [userId, thisWeek, nextWeek, comments]
     )
     return res.json({ data: convertDbRowToReport(result.rows[0]) })
   } catch (e) {
@@ -37,17 +37,17 @@ router.post('/', async (req, res) => {
   }
 })
 
-// get all reports by username
-router.get('/:username', async (req, res) => {
-  const { username } = req.params
-  if (username) {
+// get all reports by userId
+router.get('/:userId', async (req, res) => {
+  const { userId } = req.params
+  if (userId) {
     try {
       let result = await db.query(
         `select *
         from reports r
-        where r.username = $1
+        where r.user_id = $1
         order by r.created_at desc;`,
-        [username]
+        [userId]
       )
 
       res.json({ data: result.rows.map(convertDbRowToReport) })
@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
 function convertDbRowToReport(row) {
   return {
     id: row.id,
-    username: row.username,
+    userId: row.user_id,
     createdAt: row.created_at,
     thisWeek: row.this_week,
     nextWeek: row.next_week,

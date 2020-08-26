@@ -12,7 +12,7 @@ const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint }) => {
         const resp = await fetch(`/api/users`)
         const result = await resp.json()
         let userMap = []
-        result.data.forEach((user) => userMap.push({ username: user.username, name: user.name }))
+        result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name }))
         setUsers(userMap)
       } catch (e) {
         console.error(e)
@@ -32,7 +32,7 @@ const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint }) => {
         onChange={handleUsernameChange}
       >
         {users.map((user) => (
-          <MenuItem key={user.username} value={user.username}>
+          <MenuItem key={user.userId} value={user.userId}>
             {user.name}
           </MenuItem>
         ))}
