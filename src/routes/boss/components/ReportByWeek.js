@@ -44,7 +44,7 @@ function ReportByWeek() {
         return (
           <ReportAccordion
             key={report.id}
-            summary={users.find((user) => user.userId === report.userId).name}
+            summary={users.find((user) => user.userId === report.userId)?.name}
             details={details}
           />
         )

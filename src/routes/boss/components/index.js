@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Header from '../../../components/Header'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import ReportByName from './ReportByName'
@@ -14,7 +13,6 @@ function BossView() {
 
   return (
     <React.Fragment>
-      <Header />
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
         <Tab label="Reports By Week" />
         <Tab label="Reports By Name" />

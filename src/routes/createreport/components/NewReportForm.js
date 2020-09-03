@@ -70,7 +70,7 @@ function NewReportForm() {
     return <Created />
   } else {
     return (
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '20px', margin: '0 auto', width: 'fit-content' }}>
         <div style={{ fontSize: '28px', fontWeight: '700', paddingBottom: '20px', color: '#124191' }}>
           {' '}
           Submit Your Report{' '}
