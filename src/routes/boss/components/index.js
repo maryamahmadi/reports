@@ -14,7 +14,7 @@ function BossView() {
   return (
     <React.Fragment>
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
-        <Tab label="Reports By Week" />
+        <Tab label="Reports This Week" />
         <Tab label="Reports By Name" />
       </Tabs>
       {value === 0 && <ReportByWeek />}

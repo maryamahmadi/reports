@@ -50,7 +50,9 @@ function Login() {
   }
 
   return (
-    <div style={{ paddingTop: '30vh', paddingLeft: '30vw', display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{ paddingTop: '30vh', display: 'flex', flexDirection: 'column', margin: '0 auto', width: 'fit-content' }}
+    >
       <InputLabel htmlFor="boss-password">Please enter your password</InputLabel>
       <Input
         style={{ width: '300px', marginBottom: '20px' }}

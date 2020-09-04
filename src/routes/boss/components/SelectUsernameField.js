@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
+import FormHelperText from '@material-ui/core/FormHelperText'
 
-const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint }) => {
+const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint, helperText }) => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -23,7 +24,9 @@ const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint }) => {
 
   return (
     <div style={{ paddingBottom: '20px' }}>
-      <InputLabel id="username-label">{hint}</InputLabel>
+      <InputLabel id="username-label" style={{ marginBottom: '4px' }}>
+        {hint}
+      </InputLabel>
       <Select
         style={{ width: '200px' }}
         labelId="username-select-field"
@@ -37,6 +40,7 @@ const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint }) => {
           </MenuItem>
         ))}
       </Select>
+      <FormHelperText>This field is required.</FormHelperText>
     </div>
   )
 }

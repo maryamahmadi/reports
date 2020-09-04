@@ -81,6 +81,7 @@ function NewReportForm() {
               selectedUser={userId}
               handleUsernameChange={handleUsernameChange}
               hint="Select Your Name"
+              helperText={'This field is required.'}
             />
             <TextField
               style={{ paddingBottom: '10px', width: '400px' }}
@@ -91,6 +92,7 @@ function NewReportForm() {
               variant="outlined"
               value={thisWeek}
               onChange={(event) => setThisWeek(event.target.value)}
+              helperText={'This field is required.'}
             />
             <TextField
               style={{ paddingBottom: '10px', width: '400px' }}
