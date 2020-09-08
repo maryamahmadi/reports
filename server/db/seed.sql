@@ -16,3 +16,4 @@ insert into users (username, name, user_role) values ('rohit', 'Rohit', 'employe
 insert into users (username, name, user_role) values ('kevin', 'Kevin', 'employee');
 insert into users (username, name, user_role) values ('mayuran', 'Mayuran', 'employee');
 insert into users (username, name, user_role) values ('maryam', 'Maryam', 'employee');
+insert into users (username, name, user_role) values ('ashique', 'Ashique', 'employee');
