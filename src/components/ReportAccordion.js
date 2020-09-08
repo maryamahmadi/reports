@@ -8,8 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 function ReportAccordion({ summary, details }) {
   const withNewLines = (text) => {
     const lines = text.split('\n')
-    return lines.map((line) => {
-      return <p>{line}</p>
+    return lines.map((line, index) => {
+      return <p key={index}>{line}</p>
     })
   }
 
@@ -20,16 +20,24 @@ function ReportAccordion({ summary, details }) {
       </AccordionSummary>
       <AccordionDetails>
         <div>
-          <strong>This Week</strong>
-          <p>{withNewLines(details.thisWeek)}</p>
+          <p>
+            <strong>This Week</strong>
+          </p>
+          {withNewLines(details.thisWeek)}
           {details.nextWeek && (
             <>
-              <strong>Next Week</strong>
-              <p>{withNewLines(details.nextWeek)}</p>
+              <p>
+                <strong>Next Week</strong>
+              </p>
+              {withNewLines(details.nextWeek)}
             </>
           )}
-          {details.comments && <strong>Comments</strong>}
-          <p>{withNewLines(details.comments)}</p>
+          {details.comments && (
+            <p>
+              <strong>Comments</strong>
+            </p>
+          )}
+          {withNewLines(details.comments)}
         </div>
       </AccordionDetails>
     </Accordion>

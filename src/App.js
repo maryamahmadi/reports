@@ -9,7 +9,6 @@ import ReportByWeek from './routes/boss/components/ReportByWeek'
 import Header from './components/Header'
 
 function PrivateRoute({ children, ...rest }) {
-  const authenticated = false
   return (
     <Route
       {...rest}
