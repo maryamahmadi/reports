@@ -22,7 +22,7 @@ function ReportByName() {
     }
     fetchReports()
   }, [username])
-  console.log('***usernmae', username, reports)
+
   return (
     <div style={{ padding: '30px 30px' }}>
       <SelectUsernameField username="" handleUsernameChange={handleUsernameChange} hint="Select an Employee" />

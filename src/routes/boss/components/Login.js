@@ -55,7 +55,8 @@ function Login() {
     >
       <InputLabel htmlFor="boss-password">Please enter your password</InputLabel>
       <Input
-        style={{ width: '300px', marginBottom: '20px' }}
+        error={authenticationFailed ? true : false}
+        style={{ width: '300px' }}
         id="password-field"
         type={showPassword ? 'text' : 'password'}
         value={value}
@@ -72,7 +73,8 @@ function Login() {
           </InputAdornment>
         }
       />
-      <CustomButton type="submit" onClick={onSubmitClick}>
+      {authenticationFailed && <div style={{ color: '#F44336' }}>Incorrect Password</div>}
+      <CustomButton style={{ marginTop: '20px' }} type="submit" onClick={onSubmitClick}>
         Submit
       </CustomButton>
     </div>

@@ -6,6 +6,13 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 function ReportAccordion({ summary, details }) {
+  const withNewLines = (text) => {
+    const lines = text.split('\n')
+    return lines.map((line) => {
+      return <p>{line}</p>
+    })
+  }
+
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
@@ -14,15 +21,15 @@ function ReportAccordion({ summary, details }) {
       <AccordionDetails>
         <div>
           <strong>This Week</strong>
-          <p>{details.thisWeek}</p>
+          <p>{withNewLines(details.thisWeek)}</p>
           {details.nextWeek && (
             <>
               <strong>Next Week</strong>
-              <p>{details.nextWeek}</p>
+              <p>{withNewLines(details.nextWeek)}</p>
             </>
           )}
           {details.comments && <strong>Comments</strong>}
-          <p>{details.comments}</p>
+          <p>{withNewLines(details.comments)}</p>
         </div>
       </AccordionDetails>
     </Accordion>
