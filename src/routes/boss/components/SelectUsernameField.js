@@ -3,6 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import { sortUsers } from 'utils'
 
 const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint, helperText }) => {
   const [users, setUsers] = useState([])
@@ -14,7 +15,7 @@ const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint, helperT
         const result = await resp.json()
         let userMap = []
         result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name }))
-        setUsers(userMap)
+        setUsers(sortUsers(userMap))
       } catch (e) {
         console.error(e)
       }

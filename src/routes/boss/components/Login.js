@@ -28,7 +28,9 @@ function Login() {
   const [value, setValue] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
-  const onSubmitClick = (event) => {
+  const onSubmit = (event) => {
+    event.persist()
+    event.preventDefault()
     if (value === 'IAmTheBoss') {
       setAuthenticationFailed(false)
       window.sessionStorage.setItem('authenticated', 'true')
@@ -53,28 +55,30 @@ function Login() {
     <div
       style={{ paddingTop: '30vh', display: 'flex', flexDirection: 'column', margin: '0 auto', width: 'fit-content' }}
     >
-      <InputLabel htmlFor="boss-password">Please enter your password</InputLabel>
-      <Input
-        error={authenticationFailed ? true : false}
-        style={{ width: '300px' }}
-        id="password-field"
-        type={showPassword ? 'text' : 'password'}
-        value={value}
-        onChange={handleChange('password')}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-            >
-              {showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }
-      />
-      {authenticationFailed && <div style={{ color: '#F44336' }}>Incorrect Password</div>}
-      <CustomButton style={{ marginTop: '20px' }} type="submit" onClick={onSubmitClick}>
+      <form onSubmit={onSubmit}>
+        <InputLabel htmlFor="boss-password">Please enter your password</InputLabel>
+        <Input
+          error={authenticationFailed ? true : false}
+          style={{ width: '300px' }}
+          id="password-field"
+          type={showPassword ? 'text' : 'password'}
+          value={value}
+          onChange={handleChange('password')}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+        {authenticationFailed && <div style={{ color: '#F44336' }}>Incorrect Password</div>}
+      </form>
+      <CustomButton style={{ marginTop: '20px' }} type="submit" onClick={onSubmit}>
         Submit
       </CustomButton>
     </div>

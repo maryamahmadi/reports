@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReportAccordion from '../../../components/ReportAccordion'
+import Reminder from './Reminder'
+import { sortUsers } from 'utils'
 
 function ReportByWeek() {
   const [users, setUsers] = useState([])
@@ -10,8 +12,8 @@ function ReportByWeek() {
         const resp = await fetch(`/api/users`)
         const result = await resp.json()
         let userMap = []
-        result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name }))
-        setUsers(userMap)
+        result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name, email: user.email }))
+        setUsers(sortUsers(userMap))
       } catch (e) {
         console.error(e)
       }
@@ -19,7 +21,8 @@ function ReportByWeek() {
     fetchUsers()
   }, [])
 
-  const [reports, setReports] = useState([])
+  const [reports, setReports] = useState(null)
+  const [missingReports, setMissingReports] = useState([])
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -32,10 +35,29 @@ function ReportByWeek() {
       }
     }
     fetchReports()
+    console.log('useEffect1 DONE', reports)
   }, [])
+
+  useEffect(() => {
+    console.log('useEffect2, reports and users', reports, users)
+    const findMissingReports = () => {
+      const missingReports = users.slice()
+      // if reports and users have been fetched
+      if (reports && users) {
+        reports.forEach((report) => {
+          const index = missingReports.findIndex((missingReport) => report.userId === missingReport.userId)
+          missingReports.splice(index, 1)
+        })
+      }
+      console.log('missing', missingReports)
+      setMissingReports(missingReports)
+    }
+    findMissingReports()
+  }, [reports, users])
+  console.log('misingReports', missingReports)
   return (
     <div style={{ padding: '30px 30px' }}>
-      {reports.length > 0 &&
+      {reports?.length > 0 &&
         reports.map((report) => {
           const details = {
             thisWeek: report.thisWeek,
@@ -53,8 +75,13 @@ function ReportByWeek() {
       {(!reports || reports.length === 0) && (
         <div style={{ margin: '0 auto', textAlign: 'center' }}>No reports found.</div>
       )}
+      <Reminder employees={missingReports} />
     </div>
   )
 }
 
 export default ReportByWeek
+// employees={[
+//   { name: 'Maryam', email: 'maryam.ahmadi@gmail.com' },
+//   { name: 'Maryam', email: 'maryam.ahmadi@nokia.com' },
+// ]}

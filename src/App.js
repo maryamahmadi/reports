@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import emailjs from 'emailjs-com'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Home from './routes/home/components/index'
 import CreateReport from './routes/createreport/components/index'
@@ -29,6 +30,10 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 function App() {
+  useEffect(() => {
+    // initialize email service
+    emailjs.init('user_5cWoRRlQIKyet3BlqOik7')
+  })
   return (
     <Router>
       <Header />
@@ -49,7 +54,3 @@ function App() {
 }
 
 export default App
-
-// empty state
-// wrong password
-// create form empty doesnt show any errors
