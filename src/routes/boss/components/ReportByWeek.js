@@ -35,11 +35,9 @@ function ReportByWeek() {
       }
     }
     fetchReports()
-    console.log('useEffect1 DONE', reports)
   }, [])
 
   useEffect(() => {
-    console.log('useEffect2, reports and users', reports, users)
     const findMissingReports = () => {
       const missingReports = users.slice()
       // if reports and users have been fetched
@@ -49,12 +47,10 @@ function ReportByWeek() {
           missingReports.splice(index, 1)
         })
       }
-      console.log('missing', missingReports)
       setMissingReports(missingReports)
     }
     findMissingReports()
   }, [reports, users])
-  console.log('misingReports', missingReports)
   return (
     <div style={{ padding: '30px 30px' }}>
       {reports?.length > 0 &&
