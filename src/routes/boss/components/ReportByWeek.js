@@ -44,7 +44,7 @@ function ReportByWeek() {
       if (reports && users) {
         reports.forEach((report) => {
           const index = missingReports.findIndex((missingReport) => report.userId === missingReport.userId)
-          missingReports.splice(index, 1)
+          index >= 0 && missingReports.splice(index, 1)
         })
       }
       setMissingReports(missingReports)
