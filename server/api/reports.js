@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
     let result = await db.query(
       `select *
         from reports r
-        where created_at >= now() - interval '1 week'
+        where created_at >= now() - interval '6 days'
         order by r.created_at desc;`
     )
 
