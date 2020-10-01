@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import Created from './Created'
 import SelectUsernameField from '../../boss/components/SelectUsernameField'
+import emailjs from 'emailjs-com'
+import useUsers from '../../../components/useUsers'
 
 function NewReportForm() {
   const CustomButton = withStyles({
@@ -16,7 +18,7 @@ function NewReportForm() {
       },
     },
   })(Button)
-
+  const users = useUsers()
   const [created, setCreated] = useState(false)
   useEffect(() => setCreated(false), [])
 
@@ -45,6 +47,24 @@ function NewReportForm() {
         // )
         return
       } else {
+        // send an email to employee with a copy of their submitted report
+        const currentUser = users && users.find((user) => user.userId === result.data.userId)
+        const params = {
+          name: currentUser?.name,
+          toEmail: currentUser?.email,
+          date: result.data.createdAt,
+          comments: result.data.comments,
+          thisWeek: result.data.thisWeek,
+          nextWeek: result.data.nextWeek,
+        }
+        emailjs.send('service_c7v8imf', 'template_5tjok1m', params).then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text)
+          },
+          function (error) {
+            console.log('FAILED...', error)
+          }
+        )
         setCreated(true)
       }
     } catch (e) {

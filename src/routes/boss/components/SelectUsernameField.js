@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import { sortUsers } from 'utils'
+import useUsers from '../../../components/useUsers'
 
 const SelectUsernameField = ({ handleUsernameChange, selectedUser, hint, helperText }) => {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const resp = await fetch(`/api/users`)
-        const result = await resp.json()
-        let userMap = []
-        result.data.forEach((user) => userMap.push({ userId: user.id, name: user.name }))
-        setUsers(sortUsers(userMap))
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    fetchUsers()
-  }, [])
+  const users = useUsers()
 
   return (
     <div style={{ paddingBottom: '20px' }}>
