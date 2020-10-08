@@ -81,9 +81,26 @@ function NewReportForm() {
   const [thisWeek, setThisWeek] = useState('')
   const [nextWeek, setNextWeek] = useState('')
   const [comments, setComments] = useState('')
+  const mattUser = users && users.find((user) => user.name === 'Matt')
+  console.log('mattUser', mattUser)
+  console.log('mattUser', mattUser && mattUser.userId)
 
   const handleUsernameChange = (event) => {
     setUserId(event.target.value)
+    console.log('event.target.value', event.target.value)
+    if (mattUser.userId) {
+      if (event.target.value === mattUser.userId) {
+        if (thisWeek === '') {
+          setThisWeek('Stuff')
+        }
+        if (nextWeek === '') {
+          setNextWeek('Stuff')
+        }
+        if (comments === '') {
+          setComments('Stuff')
+        }
+      }
+    }
   }
 
   if (created) {
