@@ -17,3 +17,15 @@ insert into users (username, name, user_role, email) values ('kevin', 'Kevin', '
 insert into users (username, name, user_role, email) values ('mayuran', 'Mayuran', 'employee', 'mayuran.kanesananthakuru@nokia.com@nokia.com');
 insert into users (username, name, user_role, email) values ('maryam', 'Maryam', 'employee', 'maryam.ahmadi@nokia.com');
 insert into users (username, name, user_role, email) values ('ashique', 'Ashique', 'employee', 'ashique.ornab@nokia.com');
+insert into users (username, name, user_role, email) values ('chizhang', 'Chi Zhang', 'employee', 'chi.zhang@nokia.com');
+insert into users (username, name, user_role, email) values ('payam', 'Payam', 'employee', 'payam.belkameh@nokia.com');
+insert into users (username, name, user_role, email) values ('ken', 'Ken', 'employee', 'ken.brunet@nokia.com');
+insert into users (username, name, user_role, email) values ('gururaj', 'Gururaj', 'employee', 'gururaj.byrappa@nokia.com');
+insert into users (username, name, user_role, email) values ('jun', 'Jun', 'employee', 'jun.feng@nokia.com');
+insert into users (username, name, user_role, email) values ('jeff', 'Jeff', 'employee', 'jeffrey.furry@nokia.com');
+insert into users (username, name, user_role, email) values ('ambili', 'Ambili', 'employee', 'ambili.muraleedharan@nokia.com');
+insert into users (username, name, user_role, email) values ('abhijit', 'Abhijit', 'employee', 'abhijit.pare@nokia.com');
+insert into users (username, name, user_role, email) values ('chipham', 'Chi Pham', 'employee', 'chi.pham@nokia.com');
+insert into users (username, name, user_role, email) values ('phanh', 'Phanh', 'employee', 'phanh.pham@nokia.com');
+insert into users (username, name, user_role, email) values ('riyas', 'Riyas', 'employee', 'riyas.valiyapalathingal@nokia.com');
+
