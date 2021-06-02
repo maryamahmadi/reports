@@ -63,7 +63,13 @@ function ReportByWeek() {
           return (
             <ReportAccordion
               key={report.id}
-              summary={users.find((user) => user.userId === report.userId)?.name}
+              summary={
+                <span>
+                  <b>{users.find((user) => user.userId === report.userId)?.name}</b>
+                  <br></br>
+                  {new Date(report.createdAt).toLocaleString()}
+                </span>
+              }
               details={details}
             />
           )
@@ -77,7 +83,3 @@ function ReportByWeek() {
 }
 
 export default ReportByWeek
-// employees={[
-//   { name: 'Maryam', email: 'maryam.ahmadi@gmail.com' },
-//   { name: 'Maryam', email: 'maryam.ahmadi@nokia.com' },
-// ]}

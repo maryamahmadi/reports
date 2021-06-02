@@ -1,0 +1,28 @@
+@media only screen and (max-width: 500px) {
+  /* these rules apply when width is less than 500 */
+  .Home {
+    flex-direction: column;
+  }
+  .Photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .PhotoLabel {
+    color: #124191;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.NewReportTitle {
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  color: #124191;
+}
+
+form .TextField {
+  display: block;
+  padding-bottom: 10px;
+}

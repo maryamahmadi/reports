@@ -37,18 +37,16 @@ function App() {
   return (
     <Router>
       <Header />
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-        <Switch>
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/create-report" exact component={CreateReport}></Route>
-          <PrivateRoute path="/boss">
-            <BossView />
-          </PrivateRoute>
-          <Route path="/login" exact component={Login}></Route>
-          <Route path="/boss/report-by-name" exact component={ReportByName}></Route>
-          <Route path="/boss/report-by-week" exact component={ReportByWeek}></Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/create-report" exact component={CreateReport}></Route>
+        <PrivateRoute path="/boss">
+          <BossView />
+        </PrivateRoute>
+        <Route path="/login" exact component={Login}></Route>
+        <Route path="/boss/report-by-name" exact component={ReportByName}></Route>
+        <Route path="/boss/report-by-week" exact component={ReportByWeek}></Route>
+      </Switch>
     </Router>
   )
 }
